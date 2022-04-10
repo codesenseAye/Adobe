@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="index.js"></script>    
+</head>
+<style>
+  body {
+    color: white;
+    padding: 0 16px;
+  }
+  li:before {
+    content: '• ';
+    width: 3em;
+  }
+
+  #layers {
+    border: 1px solid #808080;
+    border-radius: 4px;
+    padding: 16px;
+  }
+</style>
+<body>
+  <sp-heading>AUTO EXPORT FOR WWS DEVS</sp-heading>
+  <div style="position: absolute;width:10px;font-size:15px;margin-top:6px">Downloads:</div><input type="text" id="pathName" placeholder="EXPORT NAME" style="margin-left:85px"></input>
+  <sp-button id="btnPopulate" style="margin-top:3px;position:absolute;">EXPORT</sp-button>
+  <progress id="progress" value="0" style="position:absolute;height:5px;width:calc(100% - 50px);margin-top:10px;visibility: hidden;"></progress>
+</body>
+</html>
