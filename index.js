@@ -77,6 +77,9 @@ async function exportLayers() {
 		return
 	}
 
+	const progressBar = document.getElementById("progress")
+	progressBar.style.visibility = "visible"
+
 	fs.getTemporaryFolder().then((tempFolder) => {
 		[ dirPath ] = tempFolder.nativePath.match(/C:\\Users\\\w+\\/)
 
@@ -85,10 +88,18 @@ async function exportLayers() {
 
 		let progress = (i) => {
 			let layer = allLayers[i]
+			let progression = i / allLayers.length
+			progressBar.value = `${progression}`
 	
 			selectLayerByID(layer._id).then(() => {
 				exportLayerAsPng(layer).then(() => {
 					if (i >= allLayers.length - 1) {
+						progressBar.value = "1"
+
+						setTimeout(() => {
+							progressBar.style.visibility = "hidden"
+						}, 750)
+
 						return
 					}
 		
